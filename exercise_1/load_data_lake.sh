@@ -1,9 +1,9 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [ ! -f data.zip ];
 then
 	echo "Downloading files"
-	wget -O data.zip https://data.medicare.gov/views/bg9k-emty/files/Nqcy71p9Ss2RSBWDmP77H1DQXcyacr2khotGbDHHW_s?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip
+	wget -O "data.zip" "https://data.medicare.gov/views/bg9k-emty/files/Nqcy71p9Ss2RSBWDmP77H1DQXcyacr2khotGbDHHW_s?content_type=application%2Fzip%3B%20charset%3Dbinary&filename=Hospital_Revised_Flatfiles.zip"
 	
 	echo "Unzipping"
 	unzip data.zip -d data
@@ -31,6 +31,7 @@ then
 		tail -n +2 "$f"_OLD > "$f"
 		rm "$f"_OLD
 	done
+fi
 
 cd data/base
 
