@@ -2,11 +2,10 @@
 
 ## Requirements
 
-Python 2.7.10+
-psycopg2
-tweepy
-lein
-streamparse
+- psycopg2
+- tweepy
+- lein
+- streamparse
 
 ## Postgres
 
@@ -42,13 +41,21 @@ def auth_get(auth_key):
 
 ## Running
 
+In `tweetwordcount`
+
 `sparse run`
 
 ## Analysis
 
+In `tweetwordcount/analysis`
+
 Search for number of times a word is mentioned
 
 `python finalresults.py your_word`
+
+List all words mentioned, ordered by most mentions first
+
+`python finalresults.py`
 
 Search for words between k1 and k2 number of mentions
 
