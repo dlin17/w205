@@ -8,22 +8,8 @@ import Queue
 import threading
 
 from streamparse.spout import Spout
+from credentials import auth_get
 
-##########################################################################
-# Twitter credentials
-##########################################################################
-twitter_credentials = {
-    "consumer_key":  "cWbUtUlTKAmmqy6dvmAqCN2ES",
-    "consumer_secret":  "AiQD9yxnxiW7wztG1ooRcCe862dfcN0r4of0MpsTa9Y3tbfJ3o",
-    "access_token":  "2812253327-DiPF2EIYrPHU2U9V8d3uH8qttGpwJSWcVyt5Otn",
-    "access_token_secret":  "KvvXHUL6UNKJI7smEbTjwvztvRdnOkajphve8wKMGmKiF",
-}
-
-
-def auth_get(auth_key):
-    if auth_key in twitter_credentials:
-        return twitter_credentials[auth_key]
-    return None
 
 ##########################################################################
 # Class to listen and act on the incoming tweets
@@ -68,7 +54,8 @@ class Tweets(Spout):
 
         # Create the stream and listen for english tweets
         stream = tweepy.Stream(auth, listener, timeout=None)
-        stream.filter(languages=["en"], track=["a", "the", "i", "you", "u"], async=True)
+        stream.filter(languages=["en"], track=[
+                      "a", "the", "i", "you", "u"], async=True)
 
     def queue(self):
         return self._queue
